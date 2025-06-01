@@ -21,6 +21,54 @@
       font-weight: bold;
     }
   </style>
+</head>
+<body>
+  <h2>X (트위터) 프로필로 이동합니다</h2>
+  <p>아래 버튼을 눌러 트위터 계정으로 이동해주세요.</p>
+  <a id="webLink" href="#" class="button">Furry!</a>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const webButton = document.getElementById("webLink");
+      if (!webButton) return;
+
+      const params = new URLSearchParams(location.search);
+      const account = params.get("account") || "furriverse";
+      const twitterWeb = `https://twitter.com/${account}`;
+
+      webButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.location.href = twitterWeb;
+      });
+    });
+  </script>
+</body>
+</html>
+
+<!--
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>X 프로필 이동</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2em;
+    }
+    a.button {
+      display: inline-block;
+      padding: 12px 24px;
+      margin: 10px;
+      background: #1da1f2;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const params = new URLSearchParams(location.search);
@@ -28,11 +76,6 @@
 
       const twitterWeb = `https://twitter.com/${account}`;
       const webButton = document.getElementById("webLink");
-
-      appButton.addEventListener("click", (e) => {
-        e.preventDefault();
-        window.location.href = twitterApp;
-      });
 
       webButton.addEventListener("click", (e) => {
         e.preventDefault();
@@ -48,7 +91,7 @@
 </body>
 </html>
 
-<!--
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
