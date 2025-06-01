@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Twitter App Redirect</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // URL에서 트위터 계정명(account 파라미터)을 가져오기
+      const params = new URLSearchParams(window.location.search);
+      const account = params.get("account");
+
+      if (!account) {
+        document.body.innerHTML = "<p>계정명이 전달되지 않았습니다.</p>";
+        return;
+      }
+
+      const twitterWeb = "https://twitter.com/"+account;
+      const twitterApp = "twitter://user?screen_name="+account;
+
+      const isAndroid = /Android/i.test(navigator.userAgent);
+      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      if (isAndroid) {
+        // 트위터 앱 시도 후, 실패 시 웹으로
+        window.location.href = twitterApp;
+        setTimeout(() => {
+          window.location.href = twitterWeb;
+        }, 1500);
+      } else if (isIOS) {
+        // iOS는 앱 직접 호출이 제한될 수 있으므로 우선 웹으로
+        window.location.href = twitterWeb;
+      } else {
+        // 기타 플랫폼은 웹으로
+        window.location.href = twitterWeb;
+      }
+    });
+  </script>
+</head>
+<body>
+  <p>트위터 계정으로 이동 중입니다...</p>
+</body>
+</html>
