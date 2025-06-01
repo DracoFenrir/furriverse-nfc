@@ -20,19 +20,16 @@
       text-decoration: none;
       font-weight: bold;
     }
-    a.button.gray {
-      background: #555;
-    }
   </style>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const params = new URLSearchParams(location.search);
       const account = params.get("account") || "furriverse";
 
-      const twitterApp = `twitter://user?screen_name=${account}`;
+      // const twitterApp = `twitter://user?screen_name=${account}`;
       const twitterWeb = `https://twitter.com/${account}`;
 
-      const appButton = document.getElementById("appLink");
+      // const appButton = document.getElementById("appLink");
       const webButton = document.getElementById("webLink");
 
       appButton.addEventListener("click", (e) => {
@@ -49,9 +46,8 @@
 </head>
 <body>
   <h2>X (트위터) 프로필로 이동합니다</h2>
-  <p>아래 버튼을 눌러 앱 또는 웹으로 이동해주세요.</p>
-  <a id="appLink" href="#" class="button">X 앱으로 열기</a>
-  <a id="webLink" href="#" class="button gray">웹으로 보기</a>
+  <p>아래 버튼을 눌러 트위터 계정으로 이동해주세요.</p>
+  <a id="appLink" href="#" class="button">Furry!</a>
 </body>
 </html>
 
